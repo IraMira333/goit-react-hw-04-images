@@ -31,10 +31,11 @@
   height: 48px;
   border: 0;
   background-image: url('https://img.icons8.com/?size=512&id=132&format=png');
-  background-size: 40%;
+  background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.6;
+  background-color: #acc5cf;
+  opacity: 0.8;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
