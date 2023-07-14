@@ -20,11 +20,11 @@ export default function Modal({ largeImageURL, tags }, closeModalWindow) {
     };
 
     window.addEventListener('keydown', closeEscape);
-    document.body.style.overflow = 'hidden';
+    document.body.classList.toggle('overflow');
 
     return () => {
       window.removeEventListener('keydown', closeEscape);
-      document.body.style.overflow = 'auto';
+      document.body.classList.toggle('overflow');
     };
   }, [closeModalWindow]);
 
