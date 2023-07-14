@@ -10,26 +10,27 @@ export default function ImageGalleryItem({
 }) {
   const [openModalWindow, setOpenModalWindow] = useState(false);
 
-  const showModalWindow = () => {
-    setOpenModalWindow(true);
-  };
+  // const showModalWindow = () => {
+  //   setOpenModalWindow(true);
+  // };
 
-  const closeModalWindow = () => {
-    setOpenModalWindow(false);
-  };
+  // const closeModalWindow = () => {
+  //   setOpenModalWindow(false);
+  // };
+  //const toglModalWindow = () => setOpenModalWindow(data => !data);
 
   return (
     <>
       <img
-        onClick={showModalWindow}
+        onClick={() => setOpenModalWindow(true)}
         className={css.galleryItemImage}
         src={webformatURL}
         alt={tags}
       />
       {openModalWindow === true && (
         <Modal
-          dataImage={{ tags, largeImageURL }}
-          closeModalWindow={closeModalWindow}
+          hits={{ tags, largeImageURL }}
+          closeModalWindow={() => setOpenModalWindow(false)}
         />
       )}
     </>
