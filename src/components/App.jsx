@@ -65,14 +65,15 @@ export const App = () => {
     if (query === queryInput) {
       return;
     }
+    console.log(queryInput);
     setQuery(queryInput);
     setPage(1);
     setImages([]);
   };
 
-  const loadMore = () => {
+  function loadMore() {
     setPage(prevState => prevState + 1);
-  };
+  }
 
   return (
     <div>
