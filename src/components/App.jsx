@@ -77,7 +77,7 @@ export const App = () => {
 
   return (
     <div>
-      <Searchbar onSubmit={searchImagesInput} />
+      <Searchbar searchImagesInput={searchImagesInput} />
 
       {isLoading && <Loader />}
       {images.length > 0 && <ImageGallery images={images} />}
