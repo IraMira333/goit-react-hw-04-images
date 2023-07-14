@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import Modal from 'components/Modal/Modal';
 import css from './ImageGallery.module.css';
 
-export default function ImageGalleryItem() {
+export default function ImageGalleryItem({
+  tags,
+  webformatURL,
+  largeImageURL,
+}) {
   const [openModalWindow, setOpenModalWindow] = useState(false);
 
   const showModalWindow = () => {
@@ -14,7 +18,6 @@ export default function ImageGalleryItem() {
     setOpenModalWindow(false);
   };
 
-  const { tags, webformatURL, largeImageURL } = this.props;
   return (
     <>
       <img
