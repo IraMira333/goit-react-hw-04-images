@@ -1,19 +1,20 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import css from './Searchbar.module.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Searchbar({ searchImagesInput }) {
-  const [searching, setSearching] = useState('');
+  // const [searching, setSearching] = useState('');
 
-  const handleChangeInput = e => {
-    setSearching(e.target.value);
-  };
+  // const handleChangeInput = e => {
+  //   setSearching(e.target.value);
+  //   console.log(searching);
+  // };
 
   const onSubmit = e => {
     e.preventDefault();
-    if (searching.trim() === '') {
+    const searching = e.target.searching.value.trim().toLowerCase();
+    if (searching === '') {
       toast.warn('Please enter a request!', {
         position: 'top-center',
         autoClose: 5000,
@@ -26,7 +27,7 @@ export default function Searchbar({ searchImagesInput }) {
       });
       return;
     }
-    searchImagesInput(searching.trim());
+    searchImagesInput(searching);
   };
 
   return (
@@ -35,8 +36,7 @@ export default function Searchbar({ searchImagesInput }) {
         <input
           className={css.searchFormBtnInput}
           type="text"
-          value={searching}
-          onChange={handleChangeInput}
+          name="searching"
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"
@@ -50,5 +50,5 @@ export default function Searchbar({ searchImagesInput }) {
 }
 
 Searchbar.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  searchImagesInput: PropTypes.func.isRequired,
 };
