@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import css from './Modal.module.css';
 
@@ -12,12 +12,21 @@ export default function Modal({ largeImageURL, tags }, closeModalWindow) {
   //   document.removeEventListener('keydown', this.closeEscape);
   //   document.body.classList.toggle('overflow');
   // }
+  useEffect(() => {
+    const closeEscape = evt => {
+      if (evt.code === 'Escape') {
+        closeModalWindow();
+      }
+    };
 
-  const closeEscape = evt => {
-    if (evt.code === 'Escape') {
-      closeModalWindow();
-    }
-  };
+    window.addEventListener('keydown', closeEscape);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      window.removeEventListener('keydown', closeEscape);
+      document.body.style.overflow = 'auto';
+    };
+  }, [closeModalWindow]);
 
   const closeOverlay = evt => {
     if (evt.target === evt.currentTarget) {
@@ -38,7 +47,7 @@ Modal.propTypes = {
   dataImage: PropTypes.shape({
     tags: PropTypes.string.isRequired,
     largeImageURL: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 
   closeModalWindow: PropTypes.func.isRequired,
 };
