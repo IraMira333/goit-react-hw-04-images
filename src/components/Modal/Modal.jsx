@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import css from './Modal.module.css';
 
-export default function Modal({ largeImageURL, tags }, closeModalWindow) {
+export default function Modal({ hits, closeModalWindow }) {
   // componentDidMount() {
   //   document.addEventListener('keydown', this.closeEscape);
   //   document.body.classList.toggle('overflow');
@@ -37,14 +37,14 @@ export default function Modal({ largeImageURL, tags }, closeModalWindow) {
   return (
     <div className={css.overlay} onClick={closeOverlay}>
       <div className={css.modal}>
-        <img src={largeImageURL} alt={tags} />
+        <img src={hits.largeImageURL} alt={hits.tags} />
       </div>
     </div>
   );
 }
 
 Modal.propTypes = {
-  dataImage: PropTypes.shape({
+  hits: PropTypes.shape({
     tags: PropTypes.string.isRequired,
     largeImageURL: PropTypes.string.isRequired,
   }).isRequired,
